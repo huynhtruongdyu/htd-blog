@@ -1,0 +1,11 @@
+@use "../abstracts" as *;
+
+.card {
+  @include card;
+
+  padding: 1.5rem;
+}
+
+.card:hover {
+  background: var(--color-surface-hover);
+}
