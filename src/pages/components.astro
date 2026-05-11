@@ -1,0 +1,24 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+---
+
+<BaseLayout title="Components">
+	<main>
+		<h1>Component</h1>
+		<h2>Buttons</h2>
+		<div style="display: flex; gap: 1rem; align-items: center; flex-wrap: wrap;">
+			<button class="button button--primary">Primary</button>
+			<button class="button button--secondary">Secondary</button>
+			<button class="button button--outlined">Outlined</button>
+			<button class="button button--ghost">Ghost</button>
+		</div>
+		
+		<hr style="margin: 2rem 0; border: none; border-top: 1px solid var(--color-border);" />
+		
+		<div style="display: flex; gap: 1rem; align-items: center; flex-wrap: wrap;">
+			<button class="button button--primary button--sm">Small</button>
+			<button class="button button--primary">Default</button>
+			<button class="button button--primary button--lg">Large</button>
+		</div>
+	</main>
+</BaseLayout>

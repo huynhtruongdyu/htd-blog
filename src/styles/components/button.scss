@@ -4,13 +4,36 @@
   @include flex-center;
   @include transition;
 
+  display: inline-flex;
   gap: 0.5rem;
-  padding: 0.875rem 1.25rem;
+  padding: 0.75rem 1.25rem;
   border-radius: var(--radius-md);
   font-weight: 600;
   cursor: pointer;
+  border: 1px solid transparent;
+  line-height: 1;
+  text-decoration: none;
+  font-size: 1rem;
 }
 
+/* Sizes */
+.button--sm {
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+  border-radius: var(--radius-sm);
+}
+
+.button--lg {
+  padding: 1rem 1.75rem;
+  font-size: 1.125rem;
+  border-radius: var(--radius-lg);
+}
+
+.button--full {
+  width: 100%;
+}
+
+/* Variants */
 .button--primary {
   background: var(--color-primary);
   color: white;
@@ -18,6 +41,7 @@
 
 .button--primary:hover {
   opacity: 0.9;
+  transform: translateY(-1px);
 }
 
 .button--secondary {
@@ -25,12 +49,29 @@
   color: white;
 }
 
+.button--secondary:hover {
+  opacity: 0.9;
+  transform: translateY(-1px);
+}
+
 .button--outlined {
+  background: transparent;
   border: 1px solid var(--color-border);
   color: var(--color-text);
+}
+
+.button--outlined:hover {
+  background: var(--color-surface);
+  border-color: var(--color-text-muted);
 }
 
 .button--ghost {
   background: transparent;
   color: var(--color-text-muted);
+  border: 1px solid transparent;
+}
+
+.button--ghost:hover {
+  background: var(--color-surface);
+  color: var(--color-text);
 }
