@@ -238,28 +238,34 @@ const langLabel = otherLocale.toUpperCase();
 </style>
 
 <script>
-  const toggle = document.getElementById("menu-toggle");
-  const nav = document.getElementById("main-nav");
+  document.addEventListener("astro:page-load", () => {
+    const toggle = document.getElementById("menu-toggle");
+    const nav = document.getElementById("main-nav");
+    if (!toggle || !nav) return;
 
-  if (toggle && nav) {
+    let isOpen = false;
+
     const toggleMenu = (open) => {
-      const isOpen = open !== undefined ? open : toggle.getAttribute("aria-expanded") === "false";
+      isOpen = open !== undefined ? open : !isOpen;
       toggle.setAttribute("aria-expanded", String(isOpen));
       nav.classList.toggle("is-open", isOpen);
       document.body.style.overflow = isOpen ? "hidden" : "";
     };
 
-    toggle.addEventListener("click", () => toggleMenu());
+    toggle.onclick = () => toggleMenu();
 
     nav.querySelectorAll("a").forEach((link) => {
-      link.addEventListener("click", () => toggleMenu(false));
+      link.onclick = () => toggleMenu(false);
     });
+  });
 
-    document.addEventListener("keydown", (e) => {
-      if (e.key === "Escape" && toggle.getAttribute("aria-expanded") === "true") {
-        toggleMenu(false);
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") {
+      const toggle = document.getElementById("menu-toggle");
+      if (toggle && toggle.getAttribute("aria-expanded") === "true") {
+        toggle.click();
         toggle.focus();
       }
-    });
-  }
+    }
+  });
 </script>
