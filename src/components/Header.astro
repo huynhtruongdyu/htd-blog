@@ -44,14 +44,20 @@ const langLabel = otherLocale.toUpperCase();
 
     <nav class="header__nav" id="main-nav" aria-label="Main navigation">
       <div class="header__nav-links">
-        {nav.map((item) => (
-          <a
-            href={item.href}
-            class={`header__nav-link ${pathname === item.href || (item.href !== "/" && item.href !== "/vi/" && pathname.startsWith(item.href)) ? "header__nav-link--active" : ""}`}
-          >
-            {item.label}
-          </a>
-        ))}
+        {nav.map((item) => {
+          const isActive = pathname === item.href || (item.href !== "/" && item.href !== "/vi/" && pathname.startsWith(item.href));
+          return (
+            <a
+              href={item.href}
+              class={`header__nav-link ${isActive ? "header__nav-link--active" : ""}`}
+              aria-current={isActive ? "page" : undefined}
+              aria-disabled={isActive ? "true" : undefined}
+              tabindex={isActive ? -1 : undefined}
+            >
+              {item.label}
+            </a>
+          );
+        })}
       </div>
       <div class="header__nav-actions">
         <a href={langPath} class="header__lang" aria-label={`Switch to ${otherLocale}`}>
@@ -254,8 +260,14 @@ const langLabel = otherLocale.toUpperCase();
 
     toggle.onclick = () => toggleMenu();
 
+    const isActive = (link) => link.getAttribute("aria-disabled") === "true";
+
     nav.querySelectorAll("a").forEach((link) => {
-      link.onclick = () => toggleMenu(false);
+      if (isActive(link)) {
+        link.onclick = (e) => e.preventDefault();
+      } else {
+        link.onclick = () => toggleMenu(false);
+      }
     });
   });
 
