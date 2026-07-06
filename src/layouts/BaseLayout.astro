@@ -3,6 +3,7 @@ import "../styles/main.scss";
 import Metadata from "../components/Metadata.astro";
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
+import ClientRouter from "astro/components/ClientRouter.astro";
 
 interface Props {
     title?: string;
@@ -31,6 +32,7 @@ const lang = Astro.currentLocale || "en";
 <!DOCTYPE html>
 <html lang={lang}>
 <head>
+    <ClientRouter fallback="animate" />
     <Metadata
         title={title}
         description={description}
@@ -61,7 +63,7 @@ const lang = Astro.currentLocale || "en";
 </head>
 <body>
     <Header locale={lang} pathname={Astro.url.pathname} alternateUrl={alternateUrl} />
-    <main>
+    <main transition:animate="slide">
         <slot/>
     </main>
     <Footer locale={lang} />
