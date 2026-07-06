@@ -67,17 +67,17 @@
 </style>
 
 <script>
-	document.addEventListener("astro:page-load", () => {
-		const themeToggle = document.getElementById('theme-toggle');
-		if (!themeToggle) return;
+  (function() {
+    const toggle = document.getElementById('theme-toggle');
+    if (!toggle) return;
 
-		themeToggle.onclick = () => {
-			const element = document.documentElement;
-			const isDark = element.getAttribute('data-theme') === 'dark';
-			const nextTheme = isDark ? 'light' : 'dark';
+    toggle.addEventListener('click', () => {
+      const element = document.documentElement;
+      const isDark = element.getAttribute('data-theme') === 'dark';
+      const nextTheme = isDark ? 'light' : 'dark';
 
-			element.setAttribute('data-theme', nextTheme);
-			localStorage.setItem('theme', nextTheme);
-		};
-	});
+      element.setAttribute('data-theme', nextTheme);
+      localStorage.setItem('theme', nextTheme);
+    });
+  })();
 </script>
