@@ -13,29 +13,11 @@ import BaseLayout from "../layouts/BaseLayout.astro";
     <h1 class="page-title">Get in Touch</h1>
 
     <p class="contact__intro">
-      Have a project in mind or just want to say hello? Drop me a message and I'll get back to you.
+      Have a project in mind or just want to say hello? Drop me an email and I'll get back to you.
     </p>
 
-    <form class="contact-form" action="#" method="POST" data-netlify="true" name="contact">
-      <input type="hidden" name="form-name" value="contact" />
-      <div class="contact-form__field">
-        <label class="contact-form__label small-caps" for="name">Name</label>
-        <input class="input" type="text" id="name" name="name" placeholder="Your name" required />
-      </div>
-      <div class="contact-form__field">
-        <label class="contact-form__label small-caps" for="email">Email</label>
-        <input class="input" type="email" id="email" name="email" placeholder="your@email.com" required />
-      </div>
-      <div class="contact-form__field">
-        <label class="contact-form__label small-caps" for="message">Message</label>
-        <textarea class="input" id="message" name="message" placeholder="Your message..." rows="5" required></textarea>
-      </div>
-      <button type="submit" class="button button--primary button--lg">Send Message</button>
-    </form>
-
     <div class="contact__alt">
-      <p>Or reach out directly:</p>
-      <a href="mailto:hello@duyhuynh.net" class="contact__email">hello@duyhuynh.net</a>
+      <a href="mailto:contact@duyhuynh.net" class="contact__email">contact@duyhuynh.net</a>
     </div>
   </div>
 </BaseLayout>
@@ -56,33 +38,8 @@ import BaseLayout from "../layouts/BaseLayout.astro";
     margin-bottom: 2.5rem;
   }
 
-  .contact-form {
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
-  }
-
-  .contact-form__field {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-  }
-
-  .contact-form__label {
-    color: var(--color-foreground);
-    font-size: 0.7rem;
-  }
-
   .contact__alt {
-    margin-top: 3rem;
-    padding-top: 2rem;
-    border-top: 1px solid var(--color-border);
     text-align: center;
-  }
-
-  .contact__alt p {
-    color: var(--color-muted-foreground);
-    margin-bottom: 0.75rem;
   }
 
   .contact__email {
