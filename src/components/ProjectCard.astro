@@ -2,32 +2,47 @@
 interface Props {
   title: string;
   description: string;
-  url?: string;
+  slug: string;
+  locale?: string;
   github?: string;
   featured?: boolean;
 }
 
-const { title, description, url, github, featured = false } = Astro.props;
+const { title, description, slug, locale = "en", github, featured = false } = Astro.props;
+const prefix = locale === "en" ? "" : "/vi";
 ---
 
-<article class={`card ${featured ? "card--accent-top" : ""}`}>
-  <h3 class="project-card__title">{title}</h3>
-  <p class="project-card__description">{description}</p>
-  <div class="project-card__actions">
-    {url && (
-      <a href={url} target="_blank" rel="noopener noreferrer" class="button button--primary button--sm">
-        Live
-      </a>
-    )}
-    {github && (
+<article class={`card project-card ${featured ? "card--accent-top" : ""}`}>
+  <a href={`${prefix}/projects/${slug}`} class="project-card__link">
+    <h3 class="project-card__title">{title}</h3>
+    <p class="project-card__description">{description}</p>
+  </a>
+  {github && (
+    <div class="project-card__actions">
       <a href={github} target="_blank" rel="noopener noreferrer" class="button button--ghost button--sm">
         GitHub
       </a>
-    )}
-  </div>
+    </div>
+  )}
 </article>
 
 <style>
+  .project-card {
+    transition: all var(--transition-normal);
+  }
+
+  .project-card:hover {
+    box-shadow: var(--shadow-md);
+    border-color: color-mix(in srgb, var(--color-border) 70%, var(--color-foreground));
+    background: color-mix(in srgb, var(--color-muted) 30%, var(--color-card));
+  }
+
+  .project-card__link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+  }
+
   .project-card__title {
     font-family: var(--font-display);
     font-weight: 600;

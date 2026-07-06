@@ -23,7 +23,8 @@ const sorted = projects.sort((a, b) => a.data.order - b.data.order);
           <ProjectCard
             title={project.data.title}
             description={project.data.description}
-            url={project.data.url}
+            slug={project.id.replace("en/", "").replace(".md", "")}
+            locale="en"
             github={project.data.github}
             featured={project.data.featured}
           />

@@ -1,0 +1,87 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { getCollection, render } from "astro:content";
+
+export async function getStaticPaths() {
+  const projects = await getCollection("projects", ({ id }) => id.startsWith("en/"));
+  return projects.map((project) => ({
+    params: { slug: project.id.replace("en/", "").replace(/\.md$/, "") },
+    props: { project },
+  }));
+}
+
+const { project } = Astro.props;
+const { Content } = await render(project);
+---
+
+<BaseLayout title={project.data.title} description={project.data.description}>
+  <article class="container container--narrow">
+    <div class="project-meta">
+      <a href="/projects" class="project-back small-caps">&larr; Back</a>
+    </div>
+
+    <h1 class="project-title">{project.data.title}</h1>
+    <p class="project-description">{project.data.description}</p>
+
+    <div class="project-links">
+      {project.data.url && (
+        <a href={project.data.url} target="_blank" rel="noopener noreferrer" class="button button--primary">
+          Visit Live
+        </a>
+      )}
+      {project.data.github && (
+        <a href={project.data.github} target="_blank" rel="noopener noreferrer" class="button button--secondary">
+          GitHub
+        </a>
+      )}
+    </div>
+
+    <div class="prose project-content">
+      <Content />
+    </div>
+  </article>
+</BaseLayout>
+
+<style>
+  .project-meta {
+    margin-bottom: 2rem;
+  }
+
+  .project-back {
+    color: var(--color-accent);
+    text-decoration: none;
+    font-size: 0.75rem;
+    transition: opacity var(--transition-fast);
+  }
+
+  .project-back:hover {
+    opacity: 0.8;
+  }
+
+  .project-title {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    line-height: 1.2;
+    margin-bottom: 1rem;
+    color: var(--color-foreground);
+  }
+
+  .project-description {
+    color: var(--color-muted-foreground);
+    line-height: 1.75;
+    font-size: 1.125rem;
+    margin-bottom: 2rem;
+  }
+
+  .project-links {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 3rem;
+  }
+
+  .project-content {
+    padding-bottom: 4rem;
+  }
+</style>

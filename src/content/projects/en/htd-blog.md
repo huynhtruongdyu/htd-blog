@@ -1,5 +1,5 @@
 ---
-title: "HTD Blog"
+title: "Duy Huynh Blog"
 description: "A bilingual personal blog and portfolio built with Astro, featuring editorial typography with a serif design system."
 url: "https://duyhuynh.net"
 github: "https://github.com/huynhtruongdyu/htd-blog"

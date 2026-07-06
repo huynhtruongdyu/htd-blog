@@ -41,7 +41,8 @@ const featuredProjects = projects
             <ProjectCard
               title={project.data.title}
               description={project.data.description}
-              url={project.data.url}
+              slug={project.id.replace("vi/", "").replace(".md", "")}
+              locale="vi"
               github={project.data.github}
               featured={project.data.featured}
             />

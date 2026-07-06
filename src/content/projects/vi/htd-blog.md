@@ -1,5 +1,5 @@
 ---
-title: "HTD Blog"
+title: "Duy Huynh Blog"
 description: "Blog cá nhân và portfolio song ngữ được xây dựng với Astro, kết hợp typography biên tập với hệ thống thiết kế serif."
 url: "https://duyhuynh.net"
 github: "https://github.com/huynhtruongdyu/htd-blog"
