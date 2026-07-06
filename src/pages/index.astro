@@ -1,5 +1,6 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+import { SITE_DESCRIPTION } from "../consts";
 import { getCollection } from "astro:content";
 import BlogCard from "../components/BlogCard.astro";
 import ProjectCard from "../components/ProjectCard.astro";
@@ -16,7 +17,7 @@ const featuredProjects = projects
   .sort((a, b) => a.data.order - b.data.order);
 ---
 
-<BaseLayout title="Home">
+<BaseLayout title="Home" description={SITE_DESCRIPTION}>
   <section class="hero">
     <div class="container container--narrow">
       <span class="hero__label small-caps">Welcome</span>

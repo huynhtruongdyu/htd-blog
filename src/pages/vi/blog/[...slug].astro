@@ -20,7 +20,7 @@ const formattedDate = post.data.pubDate.toLocaleDateString("vi-VN", {
 });
 ---
 
-<BaseLayout title={post.data.title} description={post.data.description} image={post.data.heroImage}>
+<BaseLayout title={post.data.title} description={post.data.description} image={post.data.heroImage} type="article" pubDate={post.data.pubDate} tags={post.data.tags}>
   <article class="container container--narrow">
     <div class="post-meta">
       <a href="/vi/blog" class="post-back small-caps">&larr; Quay lại</a>

@@ -1,5 +1,6 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
+import { SITE_DESCRIPTION_VI } from "../../consts";
 import { getCollection } from "astro:content";
 import BlogCard from "../../components/BlogCard.astro";
 import ProjectCard from "../../components/ProjectCard.astro";
@@ -16,7 +17,7 @@ const featuredProjects = projects
   .sort((a, b) => a.data.order - b.data.order);
 ---
 
-<BaseLayout title="Trang chủ">
+<BaseLayout title="Trang chủ" description={SITE_DESCRIPTION_VI}>
   <section class="hero">
     <div class="container container--narrow">
       <span class="hero__label small-caps">Xin chào</span>

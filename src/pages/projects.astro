@@ -7,7 +7,7 @@ const projects = await getCollection("projects", ({ id }) => id.startsWith("en/"
 const sorted = projects.sort((a, b) => a.data.order - b.data.order);
 ---
 
-<BaseLayout title="Projects">
+<BaseLayout title="Projects" description="A curated showcase of projects built by Duy Huynh — web development, design systems, and more.">
   <div class="container">
     <div class="section-label">
       <span class="section-label__line"></span>

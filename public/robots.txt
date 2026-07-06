@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://duyhuynh.net/sitemap-index.xml

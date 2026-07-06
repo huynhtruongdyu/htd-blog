@@ -7,7 +7,7 @@ const allPosts = await getCollection("blog", ({ id }) => id.startsWith("vi/"));
 const posts = allPosts.sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime());
 ---
 
-<BaseLayout title="Blog">
+<BaseLayout title="Blog" description="Suy nghĩ về kỹ thuật phần mềm, thiết kế và typography bởi Duy Huynh.">
   <div class="container container--narrow">
     <div class="section-label">
       <span class="section-label__line"></span>

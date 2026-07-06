@@ -1,5 +1,5 @@
 ---
-import { SITE_TITLE, SITE_DESCRIPTION, SITE_URL } from '../consts';
+import { SITE_TITLE, SITE_DESCRIPTION, SITE_URL, SITE_AUTHOR, SITE_IMAGE, TWITTER_HANDLE, LOCALES } from '../consts';
 
 interface Props {
 	title?: string;
@@ -7,27 +7,68 @@ interface Props {
 	image?: string;
 	canonicalURL?: string;
 	type?: 'website' | 'article';
+	locale?: string;
+	pubDate?: Date;
+	tags?: string[];
+	noindex?: boolean;
 }
 
 const {
 	title,
 	description = SITE_DESCRIPTION,
-	image = '/placeholder-social.jpg', // You should create this image or I can generate one
-	canonicalURL = new URL(Astro.url.pathname, Astro.site || SITE_URL),
+	image = SITE_IMAGE,
 	type = 'website',
+	locale = 'en',
+	pubDate,
+	tags = [],
+	noindex = false,
 } = Astro.props;
 
 const pageTitle = title ? `${title} | ${SITE_TITLE}` : SITE_TITLE;
+const url = new URL(Astro.url.pathname, SITE_URL);
+const imageUrl = new URL(image, SITE_URL).href;
+const canonicalURL = Astro.props.canonicalURL
+	? new URL(Astro.props.canonicalURL)
+	: url;
+
+const isArticle = type === 'article';
+const isHome = Astro.url.pathname === '/' || Astro.url.pathname === '/vi/';
+
+const getLocaleAlternates = () => {
+	const alternates = [];
+	for (const l of LOCALES) {
+		const path = l === 'en'
+			? Astro.url.pathname.replace(/^\/vi/, '') || '/'
+			: `/vi${Astro.url.pathname.replace(/^\/vi/, '') || '/'}`;
+		alternates.push({
+			href: new URL(path, SITE_URL).href,
+			hreflang: l,
+		});
+	}
+	alternates.push({
+		href: new URL('/', SITE_URL).href,
+		hreflang: 'x-default',
+	});
+	return alternates;
+};
+const alternates = getLocaleAlternates();
 ---
 
 <!-- Global Metadata -->
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
-<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 <meta name="generator" content={Astro.generator} />
+<meta name="robots" content={noindex ? 'noindex, nofollow' : 'index, follow'} />
+<meta name="author" content={SITE_AUTHOR} />
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 
 <!-- Canonical URL -->
-<link rel="canonical" href={canonicalURL} />
+<link rel="canonical" href={canonicalURL.href} />
+
+<!-- Alternate language links -->
+{alternates.map((alt) => (
+	<link rel="alternate" hreflang={alt.hreflang} href={alt.href} />
+))}
 
 <!-- Primary Meta Tags -->
 <title>{pageTitle}</title>
@@ -35,18 +76,76 @@ const pageTitle = title ? `${title} | ${SITE_TITLE}` : SITE_TITLE;
 <meta name="description" content={description} />
 
 <!-- Open Graph / Facebook -->
-<meta property="og:type" content={type} />
-<meta property="og:url" content={Astro.url} />
+<meta property="og:type" content={isArticle ? 'article' : 'website'} />
+<meta property="og:url" content={url.href} />
 <meta property="og:title" content={pageTitle} />
 <meta property="og:description" content={description} />
-<meta property="og:image" content={new URL(image, Astro.url)} />
+<meta property="og:image" content={imageUrl} />
+<meta property="og:site_name" content={SITE_TITLE} />
+<meta property="og:locale" content={locale === 'en' ? 'en_US' : 'vi_VN'} />
+{isArticle && pubDate && <meta property="article:published_time" content={pubDate.toISOString()} />}
+{isArticle && tags.map((tag) => <meta property="article:tag" content={tag} />)}
 
 <!-- Twitter -->
-<meta property="twitter:card" content="summary_large_image" />
-<meta property="twitter:url" content={Astro.url} />
-<meta property="twitter:title" content={pageTitle} />
-<meta property="twitter:description" content={description} />
-<meta property="twitter:image" content={new URL(image, Astro.url)} />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:url" content={url.href} />
+<meta name="twitter:title" content={pageTitle} />
+<meta name="twitter:description" content={description} />
+<meta name="twitter:image" content={imageUrl} />
+<meta name="twitter:site" content={TWITTER_HANDLE} />
+<meta name="twitter:creator" content={TWITTER_HANDLE} />
+
+<!-- JSON-LD Structured Data -->
+<script type="application/ld+json" set:html={JSON.stringify({
+	"@context": "https://schema.org",
+	"@graph": [
+		{
+			"@type": "Person",
+			"name": SITE_AUTHOR,
+			"url": SITE_URL,
+			"sameAs": [
+				"https://github.com/huynhtruongdyu",
+				"https://twitter.com/huynhtruongdyu",
+			],
+		},
+		{
+			"@type": "WebSite",
+			"name": SITE_TITLE,
+			"url": SITE_URL,
+		},
+		...(isArticle && pubDate
+			? [
+				{
+					"@type": "BlogPosting",
+					"headline": title || SITE_TITLE,
+					"description": description,
+					"datePublished": pubDate.toISOString(),
+					"author": {
+						"@type": "Person",
+						"name": SITE_AUTHOR,
+					},
+					"url": canonicalURL.href,
+					...(tags.length > 0 ? { "keywords": tags.join(", ") } : {}),
+				},
+			]
+			: []),
+		...(isHome
+			? [
+				{
+					"@type": "BreadcrumbList",
+					"itemListElement": [
+						{
+							"@type": "ListItem",
+							"position": 1,
+							"name": "Home",
+							"item": SITE_URL,
+						},
+					],
+				},
+			]
+			: []),
+	],
+})} />
 
 <!-- Theme script -->
 <script is:inline>
@@ -61,6 +160,4 @@ const pageTitle = title ? `${title} | ${SITE_TITLE}` : SITE_TITLE;
 	})();
 
 	document.documentElement.setAttribute('data-theme', theme);
-
-	window.localStorage.setItem('theme', theme);
 </script>

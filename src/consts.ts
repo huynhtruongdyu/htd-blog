@@ -1,4 +1,9 @@
 export const SITE_TITLE = 'Duy Huynh';
-export const SITE_DESCRIPTION = 'Welcome to my blog where I share my thoughts and projects.';
+export const SITE_DESCRIPTION = 'Software engineer and designer crafting thoughtful digital experiences with clean typography and refined aesthetics.';
+export const SITE_DESCRIPTION_VI = 'Kỹ sư phần mềm và nhà thiết kế, tạo ra những trải nghiệm kỹ thuật số tinh tế.';
 export const SITE_URL = 'https://duyhuynh.net';
+export const SITE_AUTHOR = 'Duy Huynh';
+export const SITE_IMAGE = '/placeholder-social.jpg';
 export const TWITTER_HANDLE = '@huynhtruongdyu';
+export const GITHUB_URL = 'https://github.com/huynhtruongdyu';
+export const LOCALES = ['en', 'vi'] as const;
