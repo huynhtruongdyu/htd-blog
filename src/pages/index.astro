@@ -20,11 +20,9 @@ const featuredProjects = projects
 <BaseLayout title="Home" description={SITE_DESCRIPTION}>
   <section class="hero">
     <div class="container container--narrow">
-      <span class="hero__label small-caps">Welcome</span>
+      <div class="hero__codeblock"><code>Console.WriteLine(<span class="hero__string">"Hello World"</span>);</code></div>
       <h1 class="hero__title">Duy Huynh</h1>
-      <p class="hero__subtitle">
-        Software engineer &amp; designer crafting thoughtful digital experiences with clean typography and refined aesthetics.
-      </p>
+      <p class="hero__slogan">Less Code, No Vibe, No Hype</p>
     </div>
   </section>
 
@@ -82,14 +80,29 @@ const featuredProjects = projects
 
 <style>
   .hero {
-    padding: 6rem 0 4rem;
+    padding: 5rem 0 3rem;
     text-align: center;
   }
 
-  .hero__label {
-    color: var(--color-accent);
-    margin-bottom: 1.5rem;
+  .hero__codeblock {
     display: inline-block;
+    background: var(--color-muted);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    padding: 0.4rem 0.85rem;
+    margin-bottom: 1.25rem;
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    color: var(--color-accent);
+  }
+
+  .hero__codeblock code {
+    font-family: inherit;
+    color: inherit;
+  }
+
+  .hero__string {
+    color: var(--color-foreground);
   }
 
   .hero__title {
@@ -98,20 +111,20 @@ const featuredProjects = projects
     font-weight: 400;
     letter-spacing: -0.02em;
     line-height: 1.1;
-    margin-bottom: 1.5rem;
+    margin-bottom: 0.75rem;
     color: var(--color-foreground);
   }
 
-  .hero__subtitle {
-    font-size: 1.125rem;
-    line-height: 1.75;
-    color: var(--color-muted-foreground);
-    max-width: 36rem;
-    margin: 0 auto;
+  .hero__slogan {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--color-accent);
   }
 
   .section {
-    padding: 4rem 0;
+    padding: 3rem 0;
   }
 
   .projects-grid {
@@ -122,7 +135,7 @@ const featuredProjects = projects
 
   @media (max-width: 768px) {
     .hero {
-      padding: 4rem 0 2rem;
+      padding: 3rem 0 2rem;
     }
 
     .section {

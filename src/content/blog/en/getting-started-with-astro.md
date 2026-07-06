@@ -3,6 +3,7 @@ title: "Building a Modern Blog with Astro"
 description: "How I built this site using Astro, the all-in-one web framework for content-driven websites."
 pubDate: "2026-06-15"
 tags: ["astro", "web-development", "javascript"]
+translationKey: "getting-started-with-astro"
 heroImage: "/placeholder-social.jpg"
 ---
 

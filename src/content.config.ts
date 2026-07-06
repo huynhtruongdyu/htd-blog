@@ -10,6 +10,7 @@ const blog = defineCollection({
     updatedDate: z.date().optional(),
     heroImage: z.string().default('/placeholder-social.jpg'),
     tags: z.array(z.string()).default([]),
+    translationKey: z.string().optional(),
   }),
 });
 

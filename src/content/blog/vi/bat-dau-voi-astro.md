@@ -3,6 +3,7 @@ title: "Xây dựng Blog Hiện đại với Astro"
 description: "Cách tôi xây dựng trang web này sử dụng Astro, framework web toàn diện cho các trang web tập trung vào nội dung."
 pubDate: "2026-06-15"
 tags: ["astro", "web-development", "javascript"]
+translationKey: "getting-started-with-astro"
 heroImage: "/placeholder-social.jpg"
 ---
 

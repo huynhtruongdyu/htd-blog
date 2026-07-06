@@ -3,6 +3,7 @@ title: "Nghệ thuật Thiết kế Typography"
 description: "Tại sao typography là nền tảng của thiết kế web tuyệt vời và cách sử dụng nó hiệu quả."
 pubDate: "2026-05-20"
 tags: ["design", "typography", "css"]
+translationKey: "typography-matters"
 heroImage: "/placeholder-social.jpg"
 ---
 

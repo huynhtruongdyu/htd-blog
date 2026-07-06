@@ -12,9 +12,11 @@ export async function getStaticPaths() {
 
 const { project } = Astro.props;
 const { Content } = await render(project);
+
+const slug = project.id.replace("en/", "").replace(/\.md$/, "");
 ---
 
-<BaseLayout title={project.data.title} description={project.data.description}>
+<BaseLayout title={project.data.title} description={project.data.description} alternateUrl={`/vi/projects/${slug}/`}>
   <article class="container container--narrow">
     <div class="project-meta">
       <a href="/projects" class="project-back small-caps">&larr; Back</a>

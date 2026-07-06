@@ -3,6 +3,7 @@ title: "The Art of Typographic Design"
 description: "Why typography is the foundation of great web design and how to use it effectively."
 pubDate: "2026-05-20"
 tags: ["design", "typography", "css"]
+translationKey: "typography-matters"
 heroImage: "/placeholder-social.jpg"
 ---
 

@@ -13,21 +13,68 @@ import BaseLayout from "../layouts/BaseLayout.astro";
     <h1 class="page-title">About Me</h1>
 
     <div class="prose">
+      <p class="prose__lead">Software Engineer with a passion for minimal, elegant design</p>
       <p>
-        I'm Duy Huynh, a software engineer and designer based in Vietnam. I build thoughtful digital experiences
-        that prioritize clarity, performance, and visual refinement.
+        Hello, I'm Duy Huynh, a software engineer with over 5 years of experience building web applications.
+        I specialize in creating clean, efficient, and user-friendly experiences that blend functionality with
+        aesthetic minimalism.
       </p>
+      <p>
+        I believe that great software is both functional and beautiful — that every button, every transition,
+        and every line of text should be intentional. My work is guided by the principle of subtraction:
+        removing the unnecessary until only the essential remains.
+      </p>
+      <p>
+        When I'm not coding, you can find me exploring new technologies or reading about software architecture and design.
+      </p>
+    </div>
 
-      <p>
-        My work spans full-stack development, UI/UX design, and design systems engineering. I believe that great
-        software is both functional and beautiful — that every button, every transition, and every line of text
-        should be intentional.
-      </p>
+    <div class="section-label" style="margin-top: 4rem;">
+      <span class="section-label__line"></span>
+      <span class="section-label__text">Experience</span>
+      <span class="section-label__line"></span>
+    </div>
 
-      <p>
-        This site is a reflection of that philosophy. Built with Astro and styled with an editorial serif design
-        system, it's designed to be a quiet, focused space for sharing ideas and showcasing work.
-      </p>
+    <div class="exp-list">
+      <div class="exp-item">
+        <div class="exp-item__header">
+          <h3 class="exp-item__title">Software Engineer</h3>
+          <span class="exp-item__company">SAI Digital</span>
+        </div>
+        <p class="exp-item__meta">Nov 2024 — Present &middot; Hybrid &middot; Ho Chi Minh City</p>
+        <p class="exp-item__tags">Sitecore, Shopify</p>
+      </div>
+      <div class="exp-item">
+        <div class="exp-item__header">
+          <h3 class="exp-item__title">Full Stack Developer</h3>
+          <span class="exp-item__company">Stepmedia Software Vietnam</span>
+        </div>
+        <p class="exp-item__meta">Sep 2022 — Sep 2024 &middot; Ho Chi Minh City</p>
+        <p class="exp-item__tags">React.js, ASP.NET Core, Microservices</p>
+      </div>
+      <div class="exp-item">
+        <div class="exp-item__header">
+          <h3 class="exp-item__title">Software Developer</h3>
+          <span class="exp-item__company">Amaris Consulting</span>
+        </div>
+        <p class="exp-item__meta">Oct 2021 — Aug 2022 &middot; Ho Chi Minh City</p>
+        <p class="exp-item__tags">.NET Core, ASP.NET MVC</p>
+      </div>
+      <div class="exp-item">
+        <div class="exp-item__header">
+          <h3 class="exp-item__title">Software Developer</h3>
+          <span class="exp-item__company">New Ocean IS Co., Ltd.</span>
+        </div>
+        <p class="exp-item__meta">Sep 2020 — Aug 2021 &middot; Ho Chi Minh City</p>
+        <p class="exp-item__tags">ASP.NET Core, Microservices</p>
+      </div>
+      <div class="exp-item">
+        <div class="exp-item__header">
+          <h3 class="exp-item__title">Intern</h3>
+          <span class="exp-item__company">DEK Technologies</span>
+        </div>
+        <p class="exp-item__meta">May 2020 — Aug 2020 &middot; Ho Chi Minh City</p>
+      </div>
     </div>
 
     <div class="section-label" style="margin-top: 4rem;">
@@ -40,31 +87,55 @@ import BaseLayout from "../layouts/BaseLayout.astro";
       <div class="card">
         <h3 class="skills__title">Frontend</h3>
         <ul class="skills__list">
-          <li>React &amp; Next.js</li>
-          <li>Astro</li>
+          <li>HTML &amp; CSS</li>
+          <li>JavaScript</li>
           <li>TypeScript</li>
-          <li>SCSS / CSS</li>
-        </ul>
-      </div>
-      <div class="card">
-        <h3 class="skills__title">Design</h3>
-        <ul class="skills__list">
-          <li>UI/UX Design</li>
-          <li>Design Systems</li>
-          <li>Typography</li>
-          <li>Figma</li>
+          <li>React</li>
         </ul>
       </div>
       <div class="card">
         <h3 class="skills__title">Backend</h3>
         <ul class="skills__list">
-          <li>Node.js</li>
-          <li>PostgreSQL</li>
-          <li>GraphQL</li>
-          <li>REST APIs</li>
+          <li>C# / .NET</li>
+          <li>ASP.NET Core</li>
+          <li>Entity Framework</li>
+          <li>REST API</li>
+          <li>SignalR</li>
+          <li>MSSQL</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3 class="skills__title">Cloud</h3>
+        <ul class="skills__list">
+          <li>Azure</li>
+          <li>App Service</li>
+          <li>Azure Functions</li>
+          <li>Service Bus</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3 class="skills__title">DevOps</h3>
+        <ul class="skills__list">
+          <li>Docker</li>
+          <li>CI/CD</li>
+          <li>GitHub Actions</li>
+          <li>GitLab CI/CD</li>
         </ul>
       </div>
     </div>
+
+    <div class="section-label" style="margin-top: 4rem;">
+      <span class="section-label__line"></span>
+      <span class="section-label__text">Certificates</span>
+      <span class="section-label__line"></span>
+    </div>
+
+    <ul class="certs-list">
+      <li class="certs-list__item">
+        <span class="certs-list__name">AZ-204</span>
+        <span class="certs-list__status certs-list__status--progress">In Progress</span>
+      </li>
+    </ul>
   </div>
 </BaseLayout>
 
@@ -76,6 +147,15 @@ import BaseLayout from "../layouts/BaseLayout.astro";
     letter-spacing: -0.01em;
     margin-bottom: 2rem;
     color: var(--color-foreground);
+  }
+
+  .prose__lead {
+    font-family: var(--font-display);
+    font-size: 1.25rem;
+    font-style: italic;
+    color: var(--color-accent);
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
   }
 
   .skills-grid {
@@ -106,5 +186,91 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 
   .skills__list li:last-child {
     border-bottom: none;
+  }
+
+  .certs-list {
+    list-style: none;
+    padding: 0;
+    margin-top: 2rem;
+  }
+
+  .certs-list__item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.75rem 0;
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .certs-list__item:last-child {
+    border-bottom: none;
+  }
+
+  .certs-list__name {
+    font-family: var(--font-mono);
+    font-size: 0.875rem;
+    color: var(--color-foreground);
+    font-weight: 500;
+  }
+
+  .certs-list__status {
+    font-size: 0.7rem;
+    font-family: var(--font-mono);
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    padding: 0.2rem 0.5rem;
+    border-radius: var(--radius-sm);
+  }
+
+  .certs-list__status--progress {
+    color: #d97706;
+    background: rgba(217, 119, 6, 0.1);
+  }
+
+  .exp-list {
+    margin-top: 2rem;
+  }
+
+  .exp-item {
+    padding: 1.25rem 0;
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .exp-item:last-child {
+    border-bottom: none;
+  }
+
+  .exp-item__header {
+    display: flex;
+    align-items: baseline;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+    margin-bottom: 0.25rem;
+  }
+
+  .exp-item__title {
+    font-family: var(--font-display);
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: var(--color-foreground);
+    margin: 0;
+  }
+
+  .exp-item__company {
+    font-size: 0.875rem;
+    color: var(--color-accent);
+  }
+
+  .exp-item__meta {
+    font-size: 0.8rem;
+    color: var(--color-muted-foreground);
+    margin: 0 0 0.3rem;
+  }
+
+  .exp-item__tags {
+    font-size: 0.75rem;
+    font-family: var(--font-mono);
+    color: var(--color-muted-foreground);
+    margin: 0;
   }
 </style>

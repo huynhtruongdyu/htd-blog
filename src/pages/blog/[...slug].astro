@@ -18,9 +18,21 @@ const formattedDate = post.data.pubDate.toLocaleDateString("en-US", {
   month: "long",
   day: "numeric",
 });
+
+let alternateUrl;
+if (post.data.translationKey) {
+  const allPosts = await getCollection("blog");
+  const translation = allPosts.find(
+    (p) => p.data.translationKey === post.data.translationKey && p.id.startsWith("vi/")
+  );
+  if (translation) {
+    const slug = translation.id.replace("vi/", "").replace(/\.md$/, "");
+    alternateUrl = `/vi/blog/${slug}/`;
+  }
+}
 ---
 
-<BaseLayout title={post.data.title} description={post.data.description} image={post.data.heroImage} type="article" pubDate={post.data.pubDate} tags={post.data.tags}>
+<BaseLayout title={post.data.title} description={post.data.description} image={post.data.heroImage} type="article" pubDate={post.data.pubDate} tags={post.data.tags} alternateUrl={alternateUrl}>
   <article class="container container--narrow">
     <div class="post-meta">
       <a href="/blog" class="post-back small-caps">&larr; Back</a>

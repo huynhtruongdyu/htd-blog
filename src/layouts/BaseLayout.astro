@@ -12,6 +12,7 @@ interface Props {
     pubDate?: Date;
     tags?: string[];
     noindex?: boolean;
+    alternateUrl?: string;
 }
 
 const {
@@ -22,6 +23,7 @@ const {
     pubDate,
     tags = [],
     noindex = false,
+    alternateUrl,
 } = Astro.props;
 const lang = Astro.currentLocale || "en";
 ---
@@ -44,7 +46,7 @@ const lang = Astro.currentLocale || "en";
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500&family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Source+Sans+3:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet" />
 </head>
 <body>
-    <Header locale={lang} pathname={Astro.url.pathname} />
+    <Header locale={lang} pathname={Astro.url.pathname} alternateUrl={alternateUrl} />
     <main>
         <slot/>
     </main>
