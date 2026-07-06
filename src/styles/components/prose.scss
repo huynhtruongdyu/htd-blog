@@ -1,27 +1,77 @@
+@use "../abstracts" as *;
+
 .prose {
   max-width: 70ch;
+  font-family: var(--font-body);
+  line-height: 1.75;
+  letter-spacing: 0.01em;
+  color: var(--color-foreground);
 }
 
 .prose p + p {
-  margin-top: 1rem;
+  margin-top: 1.5rem;
 }
 
 .prose h2,
 .prose h3 {
-  margin-top: 2rem;
+  margin-top: 2.5rem;
   margin-bottom: 1rem;
 }
 
 .prose code {
-  background: rgba(255, 255, 255, 0.08);
+  font-family: var(--font-mono);
+  font-size: 0.875em;
+  background: var(--color-muted);
   padding: 0.2rem 0.4rem;
-  border-radius: 0.35rem;
-  font-size: 0.9em;
+  border-radius: var(--radius-sm);
 }
 
 .prose pre {
   overflow-x: auto;
-  padding: 1rem;
+  padding: 1.25rem;
   border-radius: var(--radius-lg);
-  background: #111;
+  background: var(--color-foreground);
+  color: var(--color-bg);
+  font-family: var(--font-mono);
+  font-size: 0.875rem;
+  line-height: 1.6;
+}
+
+.prose pre code {
+  background: none;
+  padding: 0;
+}
+
+.prose a {
+  color: var(--color-accent);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  transition: color var(--transition-fast);
+}
+
+.prose a:hover {
+  color: var(--color-accent-secondary);
+}
+
+.prose blockquote {
+  border-left: 2px solid var(--color-accent);
+  padding-left: 1.5rem;
+  margin: 1.5rem 0;
+  color: var(--color-muted-foreground);
+  font-style: italic;
+}
+
+.prose ul,
+.prose ol {
+  margin: 1rem 0;
+  padding-left: 1.5rem;
+}
+
+.prose li {
+  margin-bottom: 0.5rem;
+}
+
+.prose hr {
+  @include rule-line;
+  margin: 3rem 0;
 }

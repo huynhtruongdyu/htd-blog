@@ -1,0 +1,50 @@
+---
+interface Props {
+  title: string;
+  description: string;
+  url?: string;
+  github?: string;
+  featured?: boolean;
+}
+
+const { title, description, url, github, featured = false } = Astro.props;
+---
+
+<article class={`card ${featured ? "card--accent-top" : ""}`}>
+  <h3 class="project-card__title">{title}</h3>
+  <p class="project-card__description">{description}</p>
+  <div class="project-card__actions">
+    {url && (
+      <a href={url} target="_blank" rel="noopener noreferrer" class="button button--primary button--sm">
+        Live
+      </a>
+    )}
+    {github && (
+      <a href={github} target="_blank" rel="noopener noreferrer" class="button button--ghost button--sm">
+        GitHub
+      </a>
+    )}
+  </div>
+</article>
+
+<style>
+  .project-card__title {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 1.25rem;
+    margin-bottom: 0.75rem;
+    line-height: 1.3;
+  }
+
+  .project-card__description {
+    color: var(--color-muted-foreground);
+    line-height: 1.7;
+    margin-bottom: 1.25rem;
+  }
+
+  .project-card__actions {
+    display: flex;
+    gap: 0.75rem;
+    align-items: center;
+  }
+</style>

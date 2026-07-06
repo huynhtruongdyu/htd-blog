@@ -1,77 +1,97 @@
 @use "../abstracts" as *;
 
 .button {
-  @include flex-center;
-  @include transition;
-
   display: inline-flex;
+  align-items: center;
+  justify-content: center;
   gap: 0.5rem;
-  padding: 0.75rem 1.25rem;
+  padding: 0.75rem 1.5rem;
   border-radius: var(--radius-md);
-  font-weight: 600;
-  cursor: pointer;
-  border: 1px solid transparent;
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: 0.9375rem;
+  letter-spacing: 0.03em;
   line-height: 1;
   text-decoration: none;
-  font-size: 1rem;
+  cursor: pointer;
+  border: 1px solid transparent;
+  transition: all var(--transition-normal);
+  touch-action: manipulation;
 }
 
-/* Sizes */
 .button--sm {
   padding: 0.5rem 1rem;
-  font-size: 0.875rem;
-  border-radius: var(--radius-sm);
+  font-size: 0.8125rem;
 }
 
 .button--lg {
-  padding: 1rem 1.75rem;
-  font-size: 1.125rem;
-  border-radius: var(--radius-lg);
+  padding: 1rem 2rem;
+  font-size: 1.0625rem;
 }
 
 .button--full {
   width: 100%;
 }
 
-/* Variants */
+/* Primary */
 .button--primary {
-  background: var(--color-primary);
-  color: white;
+  background: var(--color-accent);
+  color: var(--color-accent-foreground);
+  box-shadow: var(--shadow-sm);
 }
 
 .button--primary:hover {
-  opacity: 0.9;
+  background: var(--color-accent-secondary);
+  box-shadow: var(--shadow-md);
   transform: translateY(-1px);
 }
 
+.button--primary:active {
+  transform: translateY(0);
+}
+
+/* Secondary / Outline */
 .button--secondary {
-  background: var(--color-secondary);
-  color: white;
+  background: transparent;
+  border: 1px solid var(--color-foreground);
+  color: var(--color-foreground);
 }
 
 .button--secondary:hover {
-  opacity: 0.9;
-  transform: translateY(-1px);
+  background: var(--color-muted);
+  border-color: var(--color-accent);
+  color: var(--color-accent);
 }
 
-.button--outlined {
-  background: transparent;
-  border: 1px solid var(--color-border);
-  color: var(--color-text);
-}
-
-.button--outlined:hover {
-  background: var(--color-surface);
-  border-color: var(--color-text-muted);
-}
-
+/* Ghost */
 .button--ghost {
   background: transparent;
-  color: var(--color-text-muted);
-  border: 1px solid transparent;
+  color: var(--color-muted-foreground);
+  position: relative;
+}
+
+.button--ghost::after {
+  content: "";
+  position: absolute;
+  bottom: 2px;
+  left: 50%;
+  width: 0;
+  height: 1px;
+  background: var(--color-accent);
+  transition: all var(--transition-normal);
+  transform: translateX(-50%);
 }
 
 .button--ghost:hover {
-  background: var(--color-surface);
-  color: var(--color-text);
+  color: var(--color-foreground);
+}
+
+.button--ghost:hover::after {
+  width: calc(100% - 3rem);
+}
+
+@media (max-width: 640px) {
+  .button {
+    min-height: 44px;
+  }
 }

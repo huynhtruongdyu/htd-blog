@@ -1,0 +1,145 @@
+---
+import ThemeToggle from "./ThemeToggle.astro";
+
+interface Props {
+  locale?: string;
+  pathname?: string;
+}
+
+const { locale = "en", pathname = "/" } = Astro.props;
+
+const nav = locale === "en"
+  ? [
+      { href: "/", label: "Home" },
+      { href: "/about", label: "About" },
+      { href: "/projects", label: "Projects" },
+      { href: "/blog", label: "Blog" },
+      { href: "/contact", label: "Contact" },
+    ]
+  : [
+      { href: "/vi/", label: "Trang chủ" },
+      { href: "/vi/about", label: "Giới thiệu" },
+      { href: "/vi/projects", label: "Dự án" },
+      { href: "/vi/blog", label: "Blog" },
+      { href: "/vi/contact", label: "Liên hệ" },
+    ];
+
+const otherLocale = locale === "en" ? "vi" : "en";
+const langPath = locale === "en" ? `/vi${pathname === "/" ? "" : pathname}` : pathname.replace(/^\/vi/, "") || "/";
+const langLabel = otherLocale.toUpperCase();
+---
+
+<header class="header">
+  <div class="header__inner container">
+    <a href={locale === "en" ? "/" : "/vi/"} class="header__logo" aria-label="Home">
+      <span class="small-caps">Duy Huynh</span>
+    </a>
+    <nav class="header__nav" aria-label="Main navigation">
+      {nav.map((item) => (
+        <a
+          href={item.href}
+          class={`header__nav-link ${pathname === item.href || (item.href !== "/" && pathname.startsWith(item.href)) ? "header__nav-link--active" : ""}`}
+        >
+          {item.label}
+        </a>
+      ))}
+      <a href={langPath} class="header__lang" aria-label={`Switch to ${otherLocale}`}>
+        {langLabel}
+      </a>
+      <ThemeToggle />
+    </nav>
+  </div>
+</header>
+
+<style>
+  .header {
+    padding: 1.5rem 0;
+    border-bottom: 1px solid var(--color-border);
+    margin-bottom: 2rem;
+  }
+
+  .header__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .header__logo {
+    text-decoration: none;
+    color: var(--color-foreground);
+  }
+
+  .header__logo .small-caps {
+    font-size: 0.875rem;
+    letter-spacing: 0.12em;
+  }
+
+  .header__nav {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+  }
+
+  .header__nav-link {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--color-muted-foreground);
+    text-decoration: none;
+    padding: 0.5rem 0.75rem;
+    border-radius: var(--radius-sm);
+    transition: color var(--transition-fast);
+    touch-action: manipulation;
+  }
+
+  .header__nav-link:hover {
+    color: var(--color-foreground);
+  }
+
+  .header__nav-link--active {
+    color: var(--color-accent);
+  }
+
+  .header__lang {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    color: var(--color-muted-foreground);
+    text-decoration: none;
+    padding: 0.5rem 0.75rem;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    transition: all var(--transition-fast);
+    margin-left: 0.5rem;
+    touch-action: manipulation;
+  }
+
+  .header__lang:hover {
+    border-color: var(--color-accent);
+    color: var(--color-accent);
+  }
+
+  @media (max-width: 768px) {
+    .header {
+      padding: 1rem 0;
+    }
+
+    .header__nav {
+      gap: 0;
+    }
+
+    .header__nav-link {
+      padding: 0.4rem 0.5rem;
+      font-size: 0.65rem;
+    }
+
+    .header__lang {
+      padding: 0.4rem 0.5rem;
+      font-size: 0.65rem;
+      margin-left: 0.25rem;
+    }
+  }
+</style>

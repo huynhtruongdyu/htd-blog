@@ -1,0 +1,110 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+---
+
+<BaseLayout title="About">
+  <div class="container container--narrow">
+    <div class="section-label">
+      <span class="section-label__line"></span>
+      <span class="section-label__text">About</span>
+      <span class="section-label__line"></span>
+    </div>
+
+    <h1 class="page-title">About Me</h1>
+
+    <div class="prose">
+      <p>
+        I'm Duy Huynh, a software engineer and designer based in Vietnam. I build thoughtful digital experiences
+        that prioritize clarity, performance, and visual refinement.
+      </p>
+
+      <p>
+        My work spans full-stack development, UI/UX design, and design systems engineering. I believe that great
+        software is both functional and beautiful — that every button, every transition, and every line of text
+        should be intentional.
+      </p>
+
+      <p>
+        This site is a reflection of that philosophy. Built with Astro and styled with an editorial serif design
+        system, it's designed to be a quiet, focused space for sharing ideas and showcasing work.
+      </p>
+    </div>
+
+    <div class="section-label" style="margin-top: 4rem;">
+      <span class="section-label__line"></span>
+      <span class="section-label__text">Skills</span>
+      <span class="section-label__line"></span>
+    </div>
+
+    <div class="skills-grid">
+      <div class="card">
+        <h3 class="skills__title">Frontend</h3>
+        <ul class="skills__list">
+          <li>React &amp; Next.js</li>
+          <li>Astro</li>
+          <li>TypeScript</li>
+          <li>SCSS / CSS</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3 class="skills__title">Design</h3>
+        <ul class="skills__list">
+          <li>UI/UX Design</li>
+          <li>Design Systems</li>
+          <li>Typography</li>
+          <li>Figma</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3 class="skills__title">Backend</h3>
+        <ul class="skills__list">
+          <li>Node.js</li>
+          <li>PostgreSQL</li>
+          <li>GraphQL</li>
+          <li>REST APIs</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</BaseLayout>
+
+<style>
+  .page-title {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 4vw, 2.5rem);
+    font-weight: 400;
+    letter-spacing: -0.01em;
+    margin-bottom: 2rem;
+    color: var(--color-foreground);
+  }
+
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+  }
+
+  .skills__title {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 1.125rem;
+    margin-bottom: 1rem;
+  }
+
+  .skills__list {
+    list-style: none;
+    padding: 0;
+  }
+
+  .skills__list li {
+    font-size: 0.9375rem;
+    color: var(--color-muted-foreground);
+    padding: 0.4rem 0;
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .skills__list li:last-child {
+    border-bottom: none;
+  }
+</style>

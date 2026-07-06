@@ -2,3 +2,8 @@
   width: min(100% - 2rem, var(--container-width));
   margin-inline: auto;
 }
+
+.container--narrow {
+  width: min(100% - 2rem, 48rem);
+  margin-inline: auto;
+}

@@ -1,11 +1,28 @@
 @use "../abstracts" as *;
 
 .card {
-  @include card;
-
-  padding: 1.5rem;
+  @include card-base;
+  padding: 2rem;
+  transition: all var(--transition-normal);
+  position: relative;
 }
 
-.card:hover {
-  background: var(--color-surface-hover);
+.card--accent-top {
+  border-top: 2px solid var(--color-accent);
+}
+
+.card--elevated {
+  box-shadow: var(--shadow-md);
+}
+
+.card--featured {
+  background: color-mix(in srgb, var(--color-accent) 6%, transparent);
+  border-top: 2px solid var(--color-accent);
+  box-shadow: var(--shadow-md);
+}
+
+.card--hoverable:hover {
+  box-shadow: var(--shadow-md);
+  border-color: color-mix(in srgb, var(--color-border) 70%, var(--color-foreground));
+  background: color-mix(in srgb, var(--color-muted) 30%, var(--color-card));
 }

@@ -1,0 +1,59 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { getCollection } from "astro:content";
+import ProjectCard from "../../components/ProjectCard.astro";
+
+const projects = await getCollection("projects", ({ id }) => id.startsWith("vi/"));
+const sorted = projects.sort((a, b) => a.data.order - b.data.order);
+---
+
+<BaseLayout title="Dự án">
+  <div class="container">
+    <div class="section-label">
+      <span class="section-label__line"></span>
+      <span class="section-label__text">Dự án</span>
+      <span class="section-label__line"></span>
+    </div>
+
+    <h1 class="page-title">Những Gì Tôi Đã Xây Dựng</h1>
+
+    {sorted.length > 0 ? (
+      <div class="projects-grid">
+        {sorted.map((project) => (
+          <ProjectCard
+            title={project.data.title}
+            description={project.data.description}
+            url={project.data.url}
+            github={project.data.github}
+            featured={project.data.featured}
+          />
+        ))}
+      </div>
+    ) : (
+      <p class="empty-state">Chưa có dự án nào.</p>
+    )}
+  </div>
+</BaseLayout>
+
+<style>
+  .page-title {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 4vw, 2.5rem);
+    font-weight: 400;
+    letter-spacing: -0.01em;
+    margin-bottom: 2.5rem;
+    color: var(--color-foreground);
+  }
+
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .empty-state {
+    text-align: center;
+    color: var(--color-muted-foreground);
+    padding: 4rem 0;
+  }
+</style>
