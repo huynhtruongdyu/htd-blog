@@ -4,7 +4,7 @@ description: "Tình yêu của má không nằm ở lời nói mà ở những h
 pubDate: "2026-07-12"
 tags: ["personal"]
 translationKey: "ma-la-nguoi-de-bi-lua-nhat-tren-doi"
-heroImage: "/placeholder-social.jpg"
+heroImage: "/media/images/ma-la-nguoi-de-bi-lua-nhat-tren-doi.jpg"
 ---
 
 Chỉ cần con gọi một tiếng **"Má ơi..."** là má sẵn sàng bỏ hết mọi việc đang làm để chạy lại. Chỉ cần con nói một câu **"Con thích..."**, má sẽ nhớ mãi. Chỉ cần con nói **"Con sắp về"**, má đã tất tả ra chợ từ sớm, mua toàn những thứ cần thiết để nấu món con thích.

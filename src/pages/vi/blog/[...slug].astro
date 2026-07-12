@@ -45,6 +45,10 @@ const facebookShareUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeU
       </time>
     </div>
 
+    {post.data.heroImage !== '/placeholder-social.jpg' && (
+      <img src={post.data.heroImage} alt={post.data.title} class="post-hero" />
+    )}
+
     <h1 class="post-title">{post.data.title}</h1>
 
     {post.data.tags.length > 0 && (
@@ -91,6 +95,14 @@ const facebookShareUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeU
   .post-date {
     color: var(--color-muted-foreground);
     font-size: 0.7rem;
+  }
+
+  .post-hero {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    border-radius: var(--radius-sm);
+    margin-bottom: 2rem;
   }
 
   .post-title {
